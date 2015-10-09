@@ -38,4 +38,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Basico Github configuration token
+  config.basico_git_token = (ENV['BASICO_GIT_TOKEN'] || 'devtoken')
+
 end

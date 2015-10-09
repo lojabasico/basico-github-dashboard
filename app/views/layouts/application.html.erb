@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BasicoGithubDashboard</title>
+  <title>Basico Github Dashboard</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div class='ui container' id='dashboard'>
 
+    <h1 class='ui dividing header'>Basico Github Dashboard</h1>
+    <div class='ui raised container segment'>
+
+      <div class="ui icon input">
+        <input type="text" name="repo" placeholder="Repo:"></input>
+        <i class="search icon"></i>
+      </div>
+      <a class='ui button'>Ok</a>
+    </div>
+
+    <%= yield %>
+  </div>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

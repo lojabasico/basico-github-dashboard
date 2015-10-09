@@ -76,4 +76,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  # Basico Github configuration token
+  config.basico_git_token = (ENV['BASICO_GIT_TOKEN'] || 'prodtoken')
+
+
 end
