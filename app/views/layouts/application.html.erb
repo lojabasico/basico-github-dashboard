@@ -13,8 +13,21 @@
   <div class='ui container' id='dashboard'>
 
     <h1 class='ui dividing header'>Basico Github Dashboard</h1>
+
+    <% if @error.present? %>
+      <div class="ui icon red message">
+        <i class="notched icon remove cicle"></i>
+        <div class="content">
+          <div class="header">
+            Ops, um erro!
+          </div>
+          <p><%= @error.message %></p>
+        </div>
+      </div>
+    <% end %>
+
     <%= yield %>
-    
+
   </div>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 

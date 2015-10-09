@@ -7,7 +7,12 @@ class IssuesController < ApplicationController
           @from = !params[:from].empty? && params[:from] || (Date.today - 30).strftime("%d/%m/%Y")
           @to = !params[:to].empty? && params[:to] || (Date.today + 1).strftime("%d/%m/%Y")
 
-          summary = BasicoOctokit::SummaryApi::Issues.closed(Date.parse(@from.to_s),Date.parse(@to.to_s),@repo, "closed")
+          begin
+            summary = BasicoOctokit::SummaryApi::Issues.closed(Date.parse(@from.to_s),Date.parse(@to.to_s),@repo, "closed")
+          rescue Octokit::Unauthorized
+            @error = AppError.new
+            @error.message = '401 - Bad token. Unauthorized'
+          end
     end
   end
 end
