@@ -1,21 +1,117 @@
+<form method="get" action="<%= root_url %>">
+<div class='ui raised container segment'>
+
+  <div class="ui icon input">
+    <input type="text" name="repo" placeholder="REPO:" value="<%= @repo %>" />
+    <i class="search icon"></i>
+  </div>
+  <div  class="ui input">
+     <input type="text" class="from" name="from"  placeholder="DE:" value="<%= @from %>" style="margin-left:10px;"/>
+     <input type="text" class="to" name="to"  placeholder="ATE:" value="<%= @to %>" style="margin-left:10px;"/>
+  </div>
+  <input type="submit" class='ui button' value="RUN" style="margin-left:10px;"/>
+</div>
+</form>
 <div class="ui raised segment">
  <a class="ui black ribbon label">Tickets Solved</a>
- <span>
-   <input type="date" ></input>
- </span>
+<div class='ct-chart1' style='height:300px;width:500px'></div>
 </div>
-<div class='ui container' id='ticket_solved'><p>Ticket Solveds</p></div>
+
 <div class="ui raised segment">
- <a class="ui black ribbon label">Tickets/Labels</a>
- <span>
-   <input type="date" ></input>
- </span>
+  <a class="ui black ribbon label">Tickets/Labels</a>
+  <div class="ui two column grid">
+    <div class="column">
+      <div class='ct-chart2' style='height:300px;width:500px'></div>
+    </div>
+
+    <div class="column">
+      <div class='ct-chart3' style='height:300px;width:500px'></div>
+    </div>
+  </div>
 </div>
-<div class='ui container' id='ticket_labels'><p>Ticket/Labels</p></div>
 <div class="ui raised segment">
  <a class="ui black ribbon label">Tickets/Users</a>
- <span>
-   <input type="date" ></input>
- </span>
+<div class='ct-chart4' style='height:300px;width:500px'></div>
 </div>
-<div class='ui container' id='ticket_users'><p>Ticket/Users</p></div>
+
+<% content_for :pos_js do %>
+<script type='text/javascript' charset="utf-8">
+
+  $('.from').pickadate({
+    format: 'dd/mm/yyyy'
+  });
+  $('.to').pickadate({
+    format: 'dd/mm/yyyy'
+  });
+
+  var data1 = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  series: [[5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8]]
+  };
+
+  var options1 = {
+  seriesBarDistance: 10
+  };
+
+  new Chartist.Bar('.ct-chart1', data1, options1);
+  var data2 = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    series: [[5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8]]
+    };
+
+  var options2 = {
+      seriesBarDistance: 30,
+      reverseData: true,
+      horizontalBars: true,
+      axisY: {
+        offset: 70
+      }
+  };
+  new Chartist.Bar('.ct-chart2', data2 , options2);
+
+  var data3 = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    series: [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8]
+  };
+  //var sum = function(a, b) { return a + b };
+
+  var options3 = {
+    labelInterpolationFnc: function(value) {
+      return value
+    }
+  };
+  var responsiveOptions3 = [
+  ['screen and (min-width: 640px)', {
+    chartPadding: 30,
+    labelOffset: 100,
+    labelDirection: 'explode',
+    labelInterpolationFnc: function(value) {
+      return value;
+    }
+  }],
+  ['screen and (min-width: 1024px)', {
+    labelOffset: 80,
+    chartPadding: 20
+  }]
+];
+
+  new Chartist.Pie('.ct-chart3', data3, options3,responsiveOptions3);
+  var data4 = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    series: [[5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8]]
+    };
+
+  var options4 = {
+      seriesBarDistance: 30,
+      reverseData: true,
+      horizontalBars: true,
+      axisY: {
+        offset: 70
+      }
+  };
+  new Chartist.Bar('.ct-chart4',data4 , options4);
+
+
+
+</script>
+<% end %>

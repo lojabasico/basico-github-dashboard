@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-
+//= require vendor/pickadate/picker
+//= require vendor/pickadate/picker.date
+//= require vendor/pickadate/picker.time
 //= require semantic-ui
