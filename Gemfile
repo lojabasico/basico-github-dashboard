@@ -55,3 +55,6 @@ group :development do
   gem 'factory_girl'
 
 end
+
+
+gem 'virtus'
