@@ -1,8 +1,8 @@
 <input type='hidden' class='page-data'
-  data-ticket-users-labels='<%= @ticket_users.labels %>'
-  data-ticket-users-series='<%= @ticket_users.series %>'
-  data-ticket-labels-labels='<%= @ticket_labels.labels %>'
-  data-ticket-labels-series='<%= @ticket_labels.series %>'
+  data-ticket-users-labels='<%= @ticket_users.try(:labels) %>'
+  data-ticket-users-series='<%= @ticket_users.try(:series) %>'
+  data-ticket-labels-labels='<%= @ticket_labels.try(:labels) %>'
+  data-ticket-labels-series='<%= @ticket_labels.try(:series) %>'
   />
 
 
