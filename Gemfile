@@ -52,7 +52,7 @@ group :development do
 
   gem 'pry'
 
-  gem 'factory_girl'
+  #gem 'factory_girl'
 
 end
 
